@@ -1,0 +1,31 @@
+{
+  "name": "btc-dashboard",
+  "version": "0.0.1",
+  "description": "BTC Dashboard",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "grunt": "~0.4.5"
+  },
+  "devDependencies": {
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-htmlmin": "^0.3.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-ngdocs": "^0.2.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rathe001/btc-dashboard.git"
+  },
+  "author": "Josh Tummel",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Rathe001/btc-dashboard/issues"
+  },
+  "homepage": "https://github.com/Rathe001/btc-dashboard"
+}
