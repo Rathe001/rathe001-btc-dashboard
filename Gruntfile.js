@@ -5,21 +5,22 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		uglify: {
 			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                sourceMap: true
 			},
 			project: {
 				src: [
                     // Load main libraries first
-                    'src/vendor/**/*.js',
+                    'src/vendor/**/lib/*.js',
+                    'src/vendor/**/modules/*.js',
                     'src/app/app.js',
-                    'src/app/**/*.js'
-
+                    'src/app/home/**/*.js'
 				],
 				dest: 'dist/js/<%= pkg.name %>.min.js'
 			}
 		},
         htmlmin: {
-            dist: {
+            index: {
                 options: {
                     removeComments: true,
                     collapseWhitespace: true
@@ -27,6 +28,14 @@ module.exports = function(grunt) {
                 files: {
                     'dist/index.html': 'index.html'
                 }
+            },
+            home: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/app/home/views',
+                    src: ['*.html'],
+                    dest: 'dist/views'
+                }]
             }
         },
         copy: {
@@ -55,7 +64,15 @@ module.exports = function(grunt) {
                 src: ['src/**/*.js', '!src/**/*.spec.js'],
                 title: 'API Documentation'
             }
-        }
+        },
+        connect: {
+            options: {
+                keepalive: true,
+                port: 9000,
+                base: 'dist'
+            },
+            server: {}
+        },
 	});
 
 	// Load plugins
@@ -63,7 +80,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-ngdocs');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
 	// Default task(s).
-    grunt.registerTask('default', ['uglify', 'htmlmin', 'copy']);
+    grunt.registerTask('build', ['uglify', 'htmlmin', 'copy']);
+    grunt.registerTask('server', ['connect']);
+
 };
