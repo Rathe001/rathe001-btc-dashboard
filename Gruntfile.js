@@ -9,7 +9,8 @@ module.exports = function(grunt) {
 			},
 			project: {
 				src: [
-                    'vendor/**/*.js',
+                    // Load main libraries first
+                    'src/vendor/**/*.js',
                     'src/app/app.js',
                     'src/app/**/*.js'
 
@@ -64,5 +65,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-ngdocs');
 
 	// Default task(s).
-    grunt.registerTask('default', ['uglify', 'htmlmin', 'copy', 'ngdocs']);
+    grunt.registerTask('default', ['uglify', 'htmlmin', 'copy']);
 };
