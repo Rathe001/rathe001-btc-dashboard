@@ -3,6 +3,19 @@ module.exports = function(grunt) {
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+        clean: ["dist"],
+        ngdocs: {
+            options: {
+                dest: 'dist/docs',
+                html5Mode: true,
+                startPage: '/api',
+                title: 'BTC Dashboard Documentation'
+            },
+            api: {
+                src: ['src/app/**/*.js'],
+                title: 'API Documentation'
+            }
+        },
 		uglify: {
 			options: {
 				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
@@ -50,21 +63,6 @@ module.exports = function(grunt) {
                 ]
             }
         },
-        ngdocs: {
-            options: {
-                dest: 'docs',
-                html5Mode: true,
-                startPage: '../docs/api',
-                title: "BTC Dashboard Docs",
-                imageLink: "http://astigmapro.com",
-                titleLink: "/api",
-                bestMatch: true
-            },
-            api: {
-                src: ['src/**/*.js', '!src/**/*.spec.js'],
-                title: 'API Documentation'
-            }
-        },
         connect: {
             options: {
                 keepalive: true,
@@ -81,9 +79,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-ngdocs');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
 	// Default task(s).
-    grunt.registerTask('build', ['uglify', 'htmlmin', 'copy']);
+    grunt.registerTask('build', ['clean', 'ngdocs', 'uglify', 'htmlmin', 'copy']);
+    grunt.registerTask('docs', ['ngdocs']);
     grunt.registerTask('server', ['connect']);
 
 };

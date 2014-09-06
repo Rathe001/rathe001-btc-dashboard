@@ -11,7 +11,7 @@
                  Declarative templates with data-binding, MVC, dependency injection and great
                  testability story all implemented with pure client-side JavaScript!">
   <meta name="fragment" content="!">
-  <title ng-bind-template="BTC Dashboard Docs: {{partialTitle}}">Docs</title>
+  <title ng-bind-template="BTC Dashboard Documentation: {{partialTitle}}">Docs</title>
   <script type="text/javascript">
     // dynamically add base tag as well as css and javascript files.
     // we can't add css/js the usual way, because some browsers (FF) eagerly prefetch resources
@@ -79,7 +79,7 @@
         <div class="container">
           
           
-            <a  href="/api"  class="brand">BTC Dashboard Docs</a>
+            <a  class="brand">BTC Dashboard Documentation</a>
           
           <ul class="nav">
             <li ng-repeat="(url, name) in sections" ng-class="{active: isActivePath(url)}">
@@ -120,16 +120,8 @@
       <div class="span3">
         <form class="form-search" ng-submit="submitForm()">
           
-          <div class="dropdown search"
-               ng-class="{open: focused && bestMatch.rank > 0 && bestMatch.page != currentPage}">
-            <input type="text" ng-model="search" placeholder="search the docs"
-                   tabindex="1" accesskey="s" class="search-query" focused="focused">
-            <ul class="dropdown-menu">
-              <li>
-                <a href="{{bestMatch.page.url}}">{{bestMatch.page.shortName}}</a>
-              </li>
-            </ul>
-          </div>
+          <input type="text" ng-model="search" placeholder="search the docs"
+                 tabindex="1" accesskey="s" class="search-query">
           
           <div class="spacer"></div>
 
