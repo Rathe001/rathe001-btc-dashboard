@@ -1,13 +1,22 @@
-import { Component } from '@angular/core';
-import { ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { HeroesService } from './services/heroes.service';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
-  selector: 'app',
-  styles: [
-    require('../scss/app.scss')
-  ],
-  encapsulation: ViewEncapsulation.None,
-  template: require('./app.component.html')
+	selector: 'app',
+	templateUrl: 'src/app/app.component.html',
+	styles: [
+		require('../scss/app.scss')
+	],
+	directives: [
+		ROUTER_DIRECTIVES
+	],
+	providers: [
+		HeroesService
+	],
+	encapsulation: ViewEncapsulation.None
 })
 
-export class App {}
+export class AppComponent {
+	title = 'BTC Dashboard';
+}
