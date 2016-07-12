@@ -18,8 +18,7 @@ const routes: RouterConfig = [
 	},
 	{
 		path: '',
-		redirectTo: '/dashboard',
-		pathMatch: 'full'
+		redirectTo: '/dashboard'
 	}
 ];
 

@@ -4,6 +4,11 @@ import { Hero } from '../models/hero.model';
 
 @Injectable()
 export class HeroesService {
+	getHero(id: number) {
+		return this.getHeroes()
+			.then(heroes => heroes.find(hero => hero.id === id));
+	}
+
 	getHeroes() {
 		return Promise.resolve(HEROES);
 	}
