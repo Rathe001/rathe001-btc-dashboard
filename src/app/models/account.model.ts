@@ -1,4 +1,6 @@
 export class Account {
-  name: string;
-  profit: number;
+	id: string;
+	name: string;
+	current: number;
+	invested: number
 }

@@ -1,12 +1,11 @@
 <h1>{{title}}</h1>
 <h2>Accounts</h2>
 <ul>
-	<li *ngFor="let account of accounts" (click)="onSelect(account)" [class.selected]="account === selectedAccount">
-		<span>{{account.name}}</span> {{account.profit}}
+	<li *ngFor="let account of accounts" (click)="onSelect(account)" [class.selected]="account === selectedAccount" [class.positive]="account.current - account.invested >= 0" [class.negative]="account.current - account.invested < 0">
+		<span>{{account.name}}</span> {{account.current | currency:"USD":true:'.2-2'}}
 	</li>
 </ul>
 
 <div *ngIf="selectedAccount">
-	<h2>{{selectedAccount.name | uppercase}} is my account</h2>
-	<button (click)="gotoDetail()">View Details</button>
+	<h2>{{selectedAccount.name}} account is valued at {{selectedAccount.current | currency:"USD":true:'.2-2'}} with {{selectedAccount.invested | currency:"USD":true:'.2-2'}} invested. It is currently netting a profit of {{selectedAccount.current - selectedAccount.invested | currency:"USD":true:'.2-2'}}.</h2>
 </div>

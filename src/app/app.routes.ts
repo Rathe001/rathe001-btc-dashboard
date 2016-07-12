@@ -1,7 +1,6 @@
 import { provideRouter, RouterConfig }  from '@angular/router';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { DetailComponent } from './components/detail/detail.component';
 
 const routes: RouterConfig = [
 	{
@@ -11,10 +10,6 @@ const routes: RouterConfig = [
 	{
 		path: 'dashboard',
 		component: DashboardComponent
-	},
-	{
-		path: 'detail/:id',
-		component: DetailComponent
 	},
 	{
 		path: '',

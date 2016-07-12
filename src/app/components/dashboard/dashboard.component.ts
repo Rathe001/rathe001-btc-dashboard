@@ -20,12 +20,16 @@ export class DashboardComponent implements OnInit {
 	ngOnInit() {
 		this.accountsService.getAll()
 		   .subscribe(
-			   accounts => this.accounts = accounts,
+			   accounts => {
+				   this.accounts = accounts.sort(function(a, b) {
+					   return  (b.current - b.invested) - (a.current - a.invested);
+				   });
+			   },
 			   error =>  this.errorMessage = <any>error);
 	}
 
 	gotoDetail(account: Account) {
-		let link = ['/detail', account.name];
+		let link = ['/detail', account.id];
 		this.router.navigate(link);
 	}
 }

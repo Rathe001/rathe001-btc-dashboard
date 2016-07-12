@@ -5,21 +5,24 @@ import { Observable }     from 'rxjs/Observable';
 
 @Injectable()
 export class AccountsService {
-	private accountsUrl = 'https://www.ceetus.com/totes/bin/get_transactions.php';
+	//private accountsUrl = 'https://www.ceetus.com/totes/bin/get_transactions.php';
+	private accountsUrl = 'src/mocks/accounts.json';
 
 	private extractData(res: Response) {
 		let body = res.json();
+		let output = body;
+/*
 		let output = [];
-
 		for(let i in body) {
 			let item = {
+				id: i,
 				name: body[i][0].account,
-				profit: body[i][0].profit,
+				value: body[i][0].profit,
 			};
 			output.push(item);
 		}
-
-		return output || { };
+*/
+		return output.data || { };
 	}
 
 	private handleError (error: any) {

@@ -1,25 +1,40 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Account } from '../../models/account.model';
 import { AccountsService } from '../../services/accounts.service';
+import { ConfigService } from '../../services/config.service';
 
 @Component({
 	selector: 'heroes',
-	templateUrl: 'src/app/components/accounts/accounts.component.html'
+	templateUrl: 'src/app/components/accounts/accounts.component.html',
+	providers: [ConfigService]
 })
 
 export class AccountsComponent implements OnInit {
 	selectedAccount: Account;
 	accounts: Account[];
 	errorMessage: string;
+	loopTimerId: number;
 
 	constructor(
-		private router: Router,
+		private configService: ConfigService,
 		private accountsService: AccountsService) {
 	}
 
 	ngOnInit() {
+		this.getAccounts();
+		this.loopTimerId = setInterval(() => {
+			this.getAccounts();
+		}, this.configService.getAppConfig().getAccountsInterval);
+	}
+
+	ngOnDestroy() {
+		if (this.loopTimerId) {
+			clearInterval(this.loopTimerId);
+		}
+	}
+
+	getAccounts() {
 		this.accountsService.getAll()
 		   .subscribe(
 			   accounts => this.accounts = accounts,
@@ -27,8 +42,4 @@ export class AccountsComponent implements OnInit {
 	}
 
 	onSelect(account: Account) { this.selectedAccount = account; }
-
-	gotoDetail() {
-		this.router.navigate(['/detail', this.selectedAccount.name]);
-	}
 }

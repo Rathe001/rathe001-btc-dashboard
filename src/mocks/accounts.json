@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "id": "bitcoin",
+      "name": "Bitcoin",
+      "current": 67973.37188429,
+      "invested": 63000.00
+    },
+    {
+      "id": "litecoin",
+      "name": "Litecoin",
+      "current": 2231.3921124292,
+      "invested": 2000.00
+    },
+    {
+      "id": "gold",
+      "name": "Gold",
+      "current": 15137.37904,
+      "invested": 16000.00
+    },
+    {
+      "id": "real-estate",
+      "name": "Real Estate",
+      "current": 5478.21,
+      "invested": 5000.00
+    },
+    {
+      "id": "silver",
+      "name": "Silver",
+      "current": 90672.02669,
+      "invested": 80000.01
+    },
+    {
+      "id": "stocks",
+      "name": "Stocks",
+      "current": 62629.04,
+      "invested": 65000.00
+    }
+  ]
+}

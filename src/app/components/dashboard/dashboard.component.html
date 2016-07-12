@@ -1,8 +1,8 @@
-<h3>Top Accounts</h3>
+<h2>Top Accounts</h2>
 <div class="grid grid-pad">
   <div *ngFor="let account of accounts" (click)="gotoDetail(account)">
     <div>
-      <h4>{{account.name}}</h4>
+      <h4>{{account.name}} ({{account.current - account.invested | currency:'USD':true:'.2-2'}})</h4>
     </div>
   </div>
 </div>
