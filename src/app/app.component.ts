@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { HeroesService } from './services/heroes.service';
+import { AccountsService } from './services/accounts.service';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
@@ -12,11 +12,11 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 		ROUTER_DIRECTIVES
 	],
 	providers: [
-		HeroesService
+		AccountsService
 	],
 	encapsulation: ViewEncapsulation.None
 })
 
 export class AppComponent {
-	title = 'BTC Dashboard';
+	title = 'Investment Dashboard';
 }

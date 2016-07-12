@@ -5,14 +5,14 @@ import {
 	beforeEachProviders,
 	expect
 } from '@angular/core/testing';
-import { HeroesComponent } from './heroes.component';
+import { AccountsComponent } from './accounts.component';
 
 describe('HeroesComponent', () => {
 	beforeEachProviders(() => [
-		HeroesComponent
+		AccountsComponent
 	]);
 
-	it ('should work', inject([HeroesComponent], (app: HeroesComponent) => {
+	it ('should work', inject([AccountsComponent], (app: AccountsComponent) => {
 		// Add real test here
 		expect(2).toBe(2);
 	}));

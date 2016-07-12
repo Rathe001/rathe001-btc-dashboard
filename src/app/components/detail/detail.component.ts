@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Hero } from '../../models/hero.model';
-import { HeroesService } from '../../services/heroes.service';
+import { Account } from '../../models/account.model';
+import { AccountsService } from '../../services/accounts.service';
 
 @Component({
 	selector: 'detail',
@@ -9,19 +9,26 @@ import { HeroesService } from '../../services/heroes.service';
 })
 
 export class DetailComponent implements OnInit, OnDestroy {
-	hero: Hero;
+	account: Account;
 	sub: any;
+	errorMessage: string;
 
 	constructor(
-		private heroesService: HeroesService,
+		private accountsService: AccountsService,
 		private route: ActivatedRoute) {
 	}
 
 	ngOnInit() {
+		/*
 		this.sub = this.route.params.subscribe(params => {
 			let id = +params['id'];
-			this.heroesService.getHero(id).then(hero => this.hero = hero);
+			this.heroesService.getHero(id).subscribe(hero => this.hero = hero);
+
+			.subscribe(
+			   heroes => this.heroes = heroes,
+			   error =>  this.errorMessage = <any>error);
 		});
+		*/
 	}
 
 	ngOnDestroy() {

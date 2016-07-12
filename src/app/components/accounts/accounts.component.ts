@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Account } from '../../models/account.model';
 import { AccountsService } from '../../services/accounts.service';
 
 @Component({
-	selector: 'dashboard',
-	templateUrl: 'src/app/components/dashboard/dashboard.component.html'
+	selector: 'heroes',
+	templateUrl: 'src/app/components/accounts/accounts.component.html'
 })
 
-export class DashboardComponent implements OnInit {
-	accounts: Account[] = [];
+export class AccountsComponent implements OnInit {
+	selectedAccount: Account;
+	accounts: Account[];
 	errorMessage: string;
 
 	constructor(
@@ -24,8 +26,9 @@ export class DashboardComponent implements OnInit {
 			   error =>  this.errorMessage = <any>error);
 	}
 
-	gotoDetail(account: Account) {
-		let link = ['/detail', account.name];
-		this.router.navigate(link);
+	onSelect(account: Account) { this.selectedAccount = account; }
+
+	gotoDetail() {
+		this.router.navigate(['/detail', this.selectedAccount.name]);
 	}
 }

@@ -1,0 +1,12 @@
+<h1>{{title}}</h1>
+<h2>Accounts</h2>
+<ul>
+	<li *ngFor="let account of accounts" (click)="onSelect(account)" [class.selected]="account === selectedAccount">
+		<span>{{account.name}}</span> {{account.profit}}
+	</li>
+</ul>
+
+<div *ngIf="selectedAccount">
+	<h2>{{selectedAccount.name | uppercase}} is my account</h2>
+	<button (click)="gotoDetail()">View Details</button>
+</div>
