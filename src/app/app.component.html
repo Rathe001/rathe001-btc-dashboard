@@ -1,8 +1,16 @@
 <main>
-	<h1>{{title}}</h1>
-	<nav>
-		<a [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
-		<a [routerLink]="['/accounts']" routerLinkActive="active">Accounts</a>
-	</nav>
-	<router-outlet></router-outlet>
+	<header>
+		<div class="center-width">
+			<h1>{{title}}</h1>
+			<nav>
+				<a [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
+				<a [routerLink]="['/accounts']" routerLinkActive="active">Accounts</a>
+			</nav>
+		</div>
+	</header>
+	<div class="center-width">
+		<div class="content">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
 </main>
