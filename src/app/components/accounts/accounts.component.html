@@ -1,11 +1,39 @@
 <h1>{{title}}</h1>
 <h2>Accounts</h2>
+<p>Accounts are updated every {{configService.getAppConfig().getAccountsInterval / 1000}} seconds.</p>
+<div *ngIf="!accounts">LOADING!</div>
+<table>
+	<thead>
+		<tr>
+			<th>Account</th>
+			<th>Value</th>
+			<th>Investment</th>
+			<th>Net Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let account of accounts" (click)="onSelect(account)" [class.selected]="account === selectedAccount" [class.positive]="account.current - account.invested >= 0" [class.negative]="account.current - account.invested < 0">
+			<td>{{account.name}}</td>
+			<td>{{account.current | currency:'USD':true:'.2-2'}}</td>
+			<td>{{account.invested | currency:'USD':true:'.2-2'}}</td>
+			<td>{{getNetValue(account) | currency:'USD':true:'.2-2'}} ({{getNetPercent(account) | percent:'.2-2'}})</td>
+		</tr>
+	</tbody>
+	<tfoot *ngIf="totals">
+		<tr>
+			<td>Total</td>
+			<td>{{totals.current | currency:'USD':true:'.2-2'}}</td>
+			<td>{{totals.invested | currency:'USD':true:'.2-2'}}</td>
+			<td>{{getNetValue(totals) | currency:'USD':true:'.2-2'}} ({{getNetPercent(totals) | percent:'.2-2'}})</td>
+		</tr>
+	</tfoot>
+</table>
 <ul>
 	<li *ngFor="let account of accounts" (click)="onSelect(account)" [class.selected]="account === selectedAccount" [class.positive]="account.current - account.invested >= 0" [class.negative]="account.current - account.invested < 0">
-		<span>{{account.name}}</span> {{account.current | currency:"USD":true:'.2-2'}}
+		<span></span>
 	</li>
 </ul>
 
 <div *ngIf="selectedAccount">
-	<h2>{{selectedAccount.name}} account is valued at {{selectedAccount.current | currency:"USD":true:'.2-2'}} with {{selectedAccount.invested | currency:"USD":true:'.2-2'}} invested. It is currently netting a profit of {{selectedAccount.current - selectedAccount.invested | currency:"USD":true:'.2-2'}}.</h2>
+	<h2>{{selectedAccount.name}} account is valued at {{selectedAccount.current | currency:'USD':true:'.2-2'}} with {{selectedAccount.invested | currency:'USD':true:'.2-2'}} invested. It is currently netting a profit of {{selectedAccount.current - selectedAccount.invested | currency:'USD':true:'.2-2'}}.</h2>
 </div>
