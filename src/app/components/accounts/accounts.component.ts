@@ -40,7 +40,7 @@ export class AccountsComponent implements OnInit {
 
 	ngOnInit() {
 		this.getAccounts();
-		this.loopTimerId = setInterval(() => {
+		this.loopTimerId = window.setInterval(() => {
 			this.getAccounts();
 		}, this.configService.getAppConfig().getAccountsInterval);
 	}
