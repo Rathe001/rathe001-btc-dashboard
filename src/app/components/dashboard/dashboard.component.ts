@@ -5,7 +5,7 @@ import { AccountsService } from '../../services/accounts.service';
 
 @Component({
 	selector: 'dashboard',
-	templateUrl: 'src/app/components/dashboard/dashboard.component.html'
+	template: require('./dashboard.component.html')
 })
 
 export class DashboardComponent implements OnInit {

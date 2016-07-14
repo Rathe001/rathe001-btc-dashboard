@@ -4,7 +4,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
 	selector: 'app',
-	templateUrl: 'src/app/app.component.html',
+	template: require('./app.component.html'),
 	styles: [
 		require('../scss/app.scss')
 	],

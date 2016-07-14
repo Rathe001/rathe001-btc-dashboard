@@ -4,9 +4,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: RouterConfig = [
 	{
-		path: 'accounts',
+		path: '',
 		component: AccountsComponent
-	},
+	}
+	/*
 	{
 		path: 'dashboard',
 		component: DashboardComponent
@@ -15,6 +16,7 @@ const routes: RouterConfig = [
 		path: '',
 		redirectTo: '/dashboard'
 	}
+	*/
 ];
 
 export const APP_ROUTER_PROVIDERS = [

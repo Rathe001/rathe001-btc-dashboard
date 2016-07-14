@@ -10,8 +10,8 @@ import { TotalsService } from '../../services/totals.service';
 import { PricesService } from '../../services/prices.service';
 
 @Component({
-	selector: 'heroes',
-	templateUrl: 'src/app/components/accounts/accounts.component.html',
+	selector: 'accounts',
+	template: require('./accounts.component.html'),
 	providers: [
 		ConfigService,
 		HistoryService,
