@@ -1,4 +1,7 @@
 <div [hidden]="accounts" class="loader"></div>
+<div *ngIf="selectedAccount && prices" class="prices">
+	<h2>Current <strong>{{selectedAccount.name | lowercase}}</strong> price from <strong>{{prices.exchange | uppercase}}</strong>: {{prices.price | currency:'USD':true:'.2-3'}}</h2>
+</div>
 <table [hidden]="!accounts">
 	<thead>
 		<tr>
@@ -31,13 +34,9 @@
 		</tr>
 	</tfoot>
 </table>
-<small class="pull-right">Accounts are updated every {{configService.getAppConfig().getAccountsInterval / 1000}} seconds.</small>
-<ul>
-	<li *ngFor="let account of accounts" (click)="onSelect(account)" [class.selected]="account === selectedAccount" [class.positive]="account.current - account.invested >= 0" [class.negative]="account.current - account.invested < 0">
-		<span></span>
-	</li>
-</ul>
 
-<div *ngIf="selectedAccount">
-	<h2>{{selectedAccount.name}} account is valued at {{selectedAccount.current | currency:'USD':true:'.2-2'}} with {{selectedAccount.invested | currency:'USD':true:'.2-2'}} invested. It is currently netting a profit of {{selectedAccount.current - selectedAccount.invested | currency:'USD':true:'.2-2'}}.</h2>
+<div class="info">
+	<small class="pull-left" [hidden]="loading">Last updated on {{lastAccountRefresh | date:'medium'}}</small>
+	<small class="pull-left" [hidden]="!loading">Refreshing accounts...</small>
+	<small class="pull-right">Accounts are updated every {{configService.getAppConfig().getAccountsInterval / 1000}} seconds.</small>
 </div>

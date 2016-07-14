@@ -24,7 +24,12 @@ h1 {
   line-height: 2em;
 }
 
+strong {
+  font-weight: 700;
+}
+
 nav {
+  display: none;
   float: right;
   margin: 5px;
 }

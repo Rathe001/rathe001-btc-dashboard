@@ -24,12 +24,6 @@ export class AccountsService {
 
 	constructor (private http: Http) {}
 
-	get(id: number): Observable<Account[]> {
-		return this.http.get(this.accountsUrl)
-			.map(this.extractData)
-			.catch(this.handleError);
-	}
-
 	getAll (): Observable<Account[]> {
 		return this.http.get(this.accountsUrl)
 			.map(this.extractData)
